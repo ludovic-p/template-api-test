@@ -6,14 +6,22 @@ const Package = require('../package.json');
 const loadModels = require('./models');
 const loadRoutes = require('./routes');
 const sequelize = require('./middleware/sequelize');
+const getProfile = require('./middleware/getProfile');
+const {
+  createSequelizeAssociations,
+  syncModels
+} = require('./helpers/sequelize');
 
+loadModels();
+createSequelizeAssociations();
+syncModels();
 
 const app = express();
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
+app.use(getProfile)
 app.set('models', sequelize.models)
 
-loadModels();
 loadRoutes(app);
 
 async function init() {
