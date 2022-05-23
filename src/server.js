@@ -19,8 +19,8 @@ syncModels();
 const app = express();
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
-app.use(getProfile)
-app.set('models', sequelize.models)
+app.use(getProfile);
+app.set('models', sequelize.models);
 
 loadRoutes(app);
 
