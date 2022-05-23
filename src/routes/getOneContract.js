@@ -1,7 +1,5 @@
-const getProfile = require('../middleware/getProfile');
 
-
-const getContract = (app) => {
+const getOneContract = (app) => {
   app.get('/contracts/:id', async (req, res) => {
     const { Contract } = req.app.get('models');
     const { id } = req.params;
@@ -11,4 +9,4 @@ const getContract = (app) => {
   });
 };
 
-module.exports = getContract;
+module.exports = getOneContract;
